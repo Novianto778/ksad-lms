@@ -1,8 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import ProtectedRoutes from './ProtectedRoutes';
 import DashboardLayout from '../components/layout/DashboardLayout';
-import Dashboard from '@/pages/Dashboard';
+import ProtectedRoutes from './ProtectedRoutes';
 
 const LazyDashboard = lazy(() => import('@/pages/Dashboard'));
 const LazyChild = lazy(() => import('@/pages/Child'));
@@ -18,11 +17,15 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Dashboard />,
+                element: <LazyDashboard />,
             },
             {
                 path: 'child',
-                element: <LazyChild />,
+                element: (
+                    <ProtectedRoutes allowedRoles={['admin']}>
+                        <LazyChild />
+                    </ProtectedRoutes>
+                ),
             },
         ],
     },
