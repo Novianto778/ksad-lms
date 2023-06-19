@@ -25,17 +25,17 @@ const Sidebar = () => {
             <div
                 className={` ${
                     isOpen ? 'w-72' : 'w-20 '
-                } bg-[#F5F7F9] h-screen p-5  pt-8 relative duration-300`}
+                } bg-sidebar h-screen p-5  pt-8 relative duration-300`}
             >
                 <ChevronsRight
-                    className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
+                    className={`absolute cursor-pointer -right-3 top-9 w-7
                             border-2 rounded-full  ${!isOpen && 'rotate-180'}`}
                     onClick={toggleSidebar}
                 />
                 <div className="flex gap-x-4 items-center">
                     <img src="/logo.png" className="w-10" />
                     <h1
-                        className={`text-black font-bold origin-left text-xl duration-200 tracking-widest ${
+                        className={`text-foreground font-bold origin-left text-xl duration-200 tracking-widest ${
                             !isOpen && 'scale-0'
                         }`}
                     >

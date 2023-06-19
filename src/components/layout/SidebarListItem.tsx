@@ -27,9 +27,9 @@ const SidebarListItem = ({
         <Comp
             to={path}
             className={cn(
-                'flex rounded-md p-4 cursor-pointer text-black items-center gap-x-4 mt-2 hover:bg-black hover:text-white duration-200',
+                'flex rounded-md p-4 cursor-pointer text-foreground items-center gap-x-4 mt-2 hover:bg-foreground hover:text-background duration-200',
                 !isOpen && 'justify-center p-2 mb-6',
-                isActive && 'bg-black text-white',
+                isActive && 'bg-foreground text-background',
                 className
             )}
             {...props}
