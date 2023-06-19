@@ -60,10 +60,21 @@ module.exports = {
                     from: { height: 'var(--radix-accordion-content-height)' },
                     to: { height: 0 },
                 },
+                dash: {
+                    '0%': {
+                        strokeDasharray: '1, 100',
+                        strokeOpacity: 0,
+                    },
+                    '100%': {
+                        strokeDasharray: '100, 100',
+                        strokeOpacity: 100,
+                    },
+                },
             },
             animation: {
                 'accordion-down': 'accordion-down 0.2s ease-out',
                 'accordion-up': 'accordion-up 0.2s ease-out',
+                dash: 'dash 0.5s linear forwards',
             },
             fontFamily: {
                 outfit: ['Outfit', 'sans-serif'],
