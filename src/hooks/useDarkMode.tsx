@@ -14,7 +14,11 @@ const useDarkMode = () => {
 
     // set id root with theme class
     useEffect(() => {
+        const localTheme = window.localStorage.getItem('theme');
+
+        setMode(localTheme || 'light');
         const root = window.document.documentElement;
+
         root.classList.remove(theme === 'light' ? 'dark' : 'light');
         root.classList.add(theme);
     }, [theme]);

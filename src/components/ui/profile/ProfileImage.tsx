@@ -23,16 +23,16 @@ const ProfileImage = ({ level = 1, className, ...props }: Props) => {
                 <path
                     d="M12.2761 81.5C5.27615 72.5 -4.52385 48.6 12.2761 25"
                     stroke="#94EBE5"
-                    stroke-width="4"
-                    stroke-linecap="round"
+                    strokeWidth="4"
+                    strokeLinecap="round"
                     strokeOpacity={0}
                     className={cn('animate-dash', level > 0 && 'block')}
                 />
                 <path
                     d="M25 12.2761C34 5.27615 57.9 -4.52385 81.5 12.2761"
                     stroke="#68CEC7"
-                    stroke-width="4"
-                    stroke-linecap="round"
+                    strokeWidth="4"
+                    strokeLinecap="round"
                     strokeOpacity={0}
                     className={cn(
                         'animate-dash delay-500 hidden',
@@ -42,8 +42,8 @@ const ProfileImage = ({ level = 1, className, ...props }: Props) => {
                 <path
                     d="M94.0002 25C101 34 110.8 57.9 94.0002 81.5"
                     stroke="#4DA7A2"
-                    stroke-width="4"
-                    stroke-linecap="round"
+                    strokeWidth="4"
+                    strokeLinecap="round"
                     strokeOpacity={0}
                     className={cn(
                         'animate-dash delay-1000 hidden',
