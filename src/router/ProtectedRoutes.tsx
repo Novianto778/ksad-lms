@@ -1,12 +1,12 @@
 import { Navigate, Outlet } from 'react-router-dom';
-import useAuth from '../hooks/auth/useAuth';
+import useAuth from '@/hooks/auth/useAuth';
 interface Props {
     allowedRoles: string[];
     children?: React.ReactNode;
 }
 
 const ProtectedRoutes = ({ allowedRoles, children }: Props) => {
-    const { user, isLoading } = useAuth();
+    const { user, isLoading, session } = useAuth();
     const userRole = user?.user_metadata?.role;
 
     const isAuthenticated =
@@ -14,9 +14,11 @@ const ProtectedRoutes = ({ allowedRoles, children }: Props) => {
 
     if (isLoading) return <div>Loading...</div>;
 
-    if (!isAuthenticated) return <Navigate to="/login" />;
+    if (!isLoading && !session) return <Navigate to="/login" />;
 
-    return <>{children ? children : <Outlet />}</>;
+    if (!isAuthenticated) return <Navigate to="/" />;
+
+    return children ? children : <Outlet />;
 };
 
 export default ProtectedRoutes;

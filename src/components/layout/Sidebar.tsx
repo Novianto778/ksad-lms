@@ -10,8 +10,10 @@ import {
 import { useLocation } from 'react-router-dom';
 import { useSidebarStore } from '@/store/sidebarStore';
 import SidebarListItem from './SidebarListItem';
+import useSignOut from '@/hooks/auth/useSignOut';
 const Sidebar = () => {
     const { isOpen, toggleSidebar } = useSidebarStore();
+    const { signOut } = useSignOut();
     const { pathname } = useLocation();
     const Menus = [
         { title: 'Dashboard', icon: LayoutDashboard, path: '/' },
@@ -66,6 +68,7 @@ const Sidebar = () => {
                             'absolute bottom-0 left-8 p-2',
                             !isOpen && 'left-1/2 -translate-x-1/2'
                         )}
+                        onClick={signOut}
                     />
                 </ul>
             </div>

@@ -10,6 +10,7 @@ type Props = {
     className?: string;
     asChild?: boolean;
     isActive?: boolean;
+    onClick?: () => void;
 };
 
 const SidebarListItem = ({
@@ -20,6 +21,7 @@ const SidebarListItem = ({
     isActive,
     className,
     asChild = false,
+    onClick,
     ...props
 }: Props) => {
     const Comp = asChild ? 'div' : Link;
@@ -32,6 +34,7 @@ const SidebarListItem = ({
                 isActive && 'bg-foreground text-background',
                 className
             )}
+            onClick={onClick}
             {...props}
         >
             <Icon

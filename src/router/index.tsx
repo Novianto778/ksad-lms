@@ -1,10 +1,11 @@
 import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import DashboardLayout from '../components/layout/DashboardLayout';
+import { DashboardLayout } from '@/components/layout';
 import ProtectedRoutes from './ProtectedRoutes';
 
 const LazyDashboard = lazy(() => import('@/pages/Dashboard'));
 const LazyChild = lazy(() => import('@/pages/Child'));
+const LazyLogin = lazy(() => import('@/pages/Login'));
 
 const router = createBrowserRouter([
     {
@@ -30,8 +31,8 @@ const router = createBrowserRouter([
         ],
     },
     {
-        path: '/about',
-        element: <div>About</div>,
+        path: '/login',
+        element: <LazyLogin />,
     },
     {
         path: '*',
