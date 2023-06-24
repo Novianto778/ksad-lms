@@ -1,13 +1,15 @@
-import { Outlet } from 'react-router-dom';
+import { ProfileImage } from '@/components/ui';
+import { Outlet, useLocation } from 'react-router-dom';
 import { Sidebar } from '.';
 import RightSidebar from './RightSidebar';
-import { ProfileImage } from '@/components/ui';
 
 interface Props {
     children?: React.ReactNode;
 }
 
 const DashboardLayout = ({ children }: Props) => {
+    const { pathname } = useLocation();
+    const isShowRightSidebar = pathname === '/';
     return (
         <div className="flex">
             <Sidebar />
@@ -18,7 +20,7 @@ const DashboardLayout = ({ children }: Props) => {
             <div className="flex-1 px-8 py-8">
                 {children ? children : <Outlet />}
             </div>
-            <RightSidebar className="hidden lg:block" />
+            {isShowRightSidebar && <RightSidebar className="hidden lg:block" />}
         </div>
     );
 };
