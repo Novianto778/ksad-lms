@@ -11,3 +11,43 @@ export type MemberProgress =
 export type Mentor = Database['public']['Tables']['mentor']['Row'];
 export type Module = Database['public']['Tables']['module']['Row'];
 export type Submodule = Database['public']['Tables']['submodule']['Row'];
+
+export type CourseModule = Course & {
+    module: Module &
+        {
+            submodule: Submodule[];
+        }[];
+} & {
+    member_course: MemberCourse &
+        {
+            member_progress: MemberProgress[];
+        }[];
+};
+
+export type ModuleSubmodule = Module & {
+    submodule: Submodule[];
+};
+
+export type MemberCourseProgress = {
+    id: number;
+    title: string;
+    total_module: number;
+    level: number;
+    status: boolean | null;
+    type: string;
+    moduleUrl: string;
+    module_title: string;
+};
+
+export type RPC_Get_Member_Progress = {
+    id: number;
+    title: string;
+    total_module: number;
+    level: number;
+    status: boolean | null;
+    type: string;
+    moduleUrl: string;
+    module_title: string;
+    module_id: number;
+    submodule_title: string;
+};
