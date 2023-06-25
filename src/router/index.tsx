@@ -2,10 +2,12 @@ import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { DashboardLayout } from '@/components/layout';
 import ProtectedRoutes from './ProtectedRoutes';
+import { Loader } from '@/components/ui';
 
 const LazyDashboard = lazy(() => import('@/pages/Dashboard'));
 const LazyChild = lazy(() => import('@/pages/Child'));
 const LazyLogin = lazy(() => import('@/pages/Login'));
+const LazyCourse = lazy(() => import('@/pages/course/UserCourse'));
 
 const router = createBrowserRouter([
     {
@@ -28,6 +30,10 @@ const router = createBrowserRouter([
                     </ProtectedRoutes>
                 ),
             },
+            {
+                path: 'course/:id/submodule/:submoduleId',
+                element: <LazyCourse />,
+            },
         ],
     },
     {
@@ -42,7 +48,7 @@ const router = createBrowserRouter([
 
 const AppRouter = () => {
     return (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loader />}>
             <RouterProvider router={router} />
         </Suspense>
     );
